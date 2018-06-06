@@ -1,23 +1,30 @@
-import scala.StringContext
 import scala.io.Source
 
 object TSVFixer extends App {
 
-  var correctList:Array[String] = Array[String]()
+  val tsvDelimiter = "\t"
+  val newLineDelimiter = "\n"
+
+  val specChar1 = '\t' //tab in malformed TSV? a little bit strange
+  val specChar2 = '\r'
+  val specChar3 = '\n'
+
+  var correctList = Array[String]()
 
   Source.fromFile("data.tsv", "UTF-16LE").getLines().drop(1).foreach { line =>
-    val tokens = line.split('\t')
+    var tokens = line.split(tsvDelimiter)
     if (tokens.length == 5) {
-      correctList :+= tokens.mkString(",")
+      correctList :+= tokens.map(escape).mkString(tsvDelimiter)
     }
   }
-  println(correctList)
 
-  def escape(string:String):String={
+  import java.io.PrintWriter
+  new PrintWriter("data_correct.tsv") {
+    correctList foreach { l => write(s"$l$newLineDelimiter") };
+    close;
+  }
 
-
-
+  def escape(field: String): String = {
+    if (field.contains(specChar1) || field.contains(specChar3) || field.contains(specChar3)) s"'$field'" else field
   }
 }
-
-case class Item(id: String, first_name: String, last_name: String, account_number: Long, email: String)
