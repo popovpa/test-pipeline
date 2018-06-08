@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>t3</artifactId>
+        <groupId>t3</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>etl</groupId>
+    <artifactId>etl</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>task-utils</groupId>
+            <artifactId>task-utils</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>task1</groupId>
+            <artifactId>task1</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>task2</groupId>
+            <artifactId>task2</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+        </plugins>
+    </build>
+</project>
